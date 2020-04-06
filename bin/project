@@ -1,0 +1,55 @@
+#sample_hash = {'a'=> 1, 'b'=> 2, 'c'=>3}
+#my_details = {'name'=> 'sergio', 'favcolor'=>'red'}
+#another_hash = {a:1,b:2,c:3}
+#puts my_details['favcolor']
+#puts another_hash
+#puts another_hash[:a]
+#p another_hash.values
+
+
+#myhash= {a:1, b:2, :c =>"sergio"}
+#myhash.each {|r_key,f_value| puts "the key is #{r_key} and the value is #{f_value}"}
+#myhash.select {|v,k|v.is_a?(String)}
+
+
+users = [
+            { username: "sergio", password: "pass1"},
+            { username: "sergio1", password: "pass2"},
+            { username: "sergio2", password: "pass3"},
+            { username: "sergio3", password: "pass4"}
+        ]
+
+puts "Welcome to the authenticator"
+20.times{print "-"}
+puts 
+puts "this program will take input from user and compare password"
+puts "if credentials are correct you will get the credentials back"
+
+
+def data (user, pass, users_record)
+users_record.each do |users_record|
+if users_record[:username]  == user && users_record[:password] == pass
+return users_record
+end
+end
+puts "credentials were not correct"
+end
+
+
+
+attemp = 1
+
+while attemp <4 
+print "username: "
+user = gets.chomp
+print "password: "
+pass= gets.chomp
+authenticator = data(user, pass, users)
+print authenticator
+puts
+puts "click n to skip or any other key to continue"
+input =gets.chomp
+break if input == "n"
+attemp +=1
+end
+puts "you have exceed the number of attempts" if attemp >3
